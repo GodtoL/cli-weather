@@ -1,9 +1,9 @@
 import requests
 import api_key
 
-city = input("Escriba la ciudad: ")
+location = input("Escriba el lugar: ")
 
-params_format = {"q" : city,
+params_format = {"q" : location,
                  "units" : "metric",
                  "appid" : api_key.api_key}
 
