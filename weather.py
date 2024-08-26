@@ -1,7 +1,13 @@
 import requests
 import api_key
+import argparse
 
-location = input("Escriba el lugar: ")
+parser = argparse.ArgumentParser()
+parser.add_argument('--location', type=str, required=True)
+
+args = parser.parse_args()
+
+location = args.location
 
 params_format = {"q" : location,
                  "units" : "metric",
