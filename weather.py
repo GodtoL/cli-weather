@@ -47,4 +47,4 @@ elif format_data == 'csv':
 
     print("csv generado con éxito")
 else :
-    print(f"Error{data['cod']}. Algo ha salido mal")
+    print(f"Error{data['cod']}. Algo ha salido muy mal")
