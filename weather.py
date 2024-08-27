@@ -3,9 +3,9 @@ import api_key
 import argparse
 import csv
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--lugar', type=str, required=True)
-parser.add_argument('--formato', type=str, default='json')
+parser = argparse.ArgumentParser(description= "Obtén el clima del lugar que quieras")
+parser.add_argument('--lugar', type=str, required=True, help="Escriba aquí el lugar del de que deseas saber los datos")
+parser.add_argument('--formato', type=str, default='json', help= "Ingrese el formato en el que desee (json, text, csv)")
 
 args = parser.parse_args()
 
