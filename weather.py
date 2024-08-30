@@ -2,6 +2,7 @@ import requests
 import api_key
 import argparse
 import csv
+import json
 
 parser = argparse.ArgumentParser(description= "Obtén el clima del lugar que quieras")
 parser.add_argument('--lugar', type=str, required=True, help="Escriba aquí el lugar del de que deseas saber los datos")
@@ -24,17 +25,20 @@ response = requests.get(
 data = response.json()
 
 if format_data == 'json':
+    
+    with open("clima.json", "w") as j:
+        json.dump(data, j)
 
-    print(data)
-
-elif format_data == 'text':
+elif format_data == 'txt':
+    t = open("clima.txt", "a")
     temp = data['main']['temp']
-    print(f"En {location} la temperatura es de {temp} C°")
+    t.write(f"En {location} la temperatura es de {temp} C°")
+    t.close()
 
 elif format_data == 'csv':
 
     # Escribir los datos en un archivo CSV
-    with open('CLIMACSV', 'w', newline='') as csvfile:
+    with open('CLIMACSV','a') as csvfile:
         fieldnames = ['Ciudad', 'Temperatura', 'Descripción']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -46,5 +50,5 @@ elif format_data == 'csv':
         )
 
     print("csv generado con éxito")
-else :
+else:
     print(f"Error{data['cod']}. Algo ha salido mal")
